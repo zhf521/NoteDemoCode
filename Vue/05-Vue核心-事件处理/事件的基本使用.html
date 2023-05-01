@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件的基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2>欢迎阅读{{name}}的笔记</h2>
+      <button v-on:click="showInfo">点我提示信息</button>
+      <button @click="showInfo1()">点我提示信息1（不传参）</button>
+      <button @click="showInfo2($event,66)">点我提示信息2（传参）</button>
+    </div>
+    <script>
+      Vue.config.productionTip = false
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          name: 'zhf',
+        },
+        methods: {
+          showInfo() {
+            alert('你好呀！这是完整写法绑定事件')
+          },
+          showInfo1() {
+            alert('你好呀！这是简写方法绑定事件，不传参')
+          },
+          showInfo2(event, number) {
+            alert(`你好呀！这是简写方法绑定事件，传参，传递到参数是${number}`)
+            console.log(event)
+          },
+        },
+      })
+    </script>
+  </body>
+</html>
