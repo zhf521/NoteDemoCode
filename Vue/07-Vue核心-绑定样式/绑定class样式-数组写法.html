@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>绑定class样式-数组写法</title>
+    <style>
+      .basic {
+        width: 400px;
+        height: 100px;
+        border: 1px solid black;
+      }
+      .zhf1 {
+        background-color: yellowgreen;
+      }
+      .zhf2 {
+        font-size: 30px;
+        text-shadow: 2px 2px 10px red;
+      }
+      .zhf3 {
+        border-radius: 20px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器-->
+    <div id="root">
+      <!-- 绑定class样式--数组写法，适用于：要绑定的样式个数不确定、名字也不确定 -->
+      <div class="basic" :class="classArr">{{name}}</div>
+    </div>
+    <script>
+      Vue.config.productionTip = false
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          name: 'zhf',
+          classArr: ['zhf1', 'zhf2', 'zhf3'],
+        },
+      })
+    </script>
+  </body>
+</html>
