@@ -6,6 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>过滤器</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- //引入dayjs库 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.7/dayjs.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="root">
+      <h2>时间</h2>
+      <h3>当前时间戳：{{time}}</h3>
+      <h3>转换后的时间：{{time|timeFilter()}}</h3>
+      <h3>转换后的时间：{{time|timeFilter('YYYY-MM-DD HH:mm:ss')}}</h3>
+      <h3>截取年月日：{{time|timeFilter() | mySlice}}</h3>
+    </div>
+    <script>
+      Vue.config.productionTip = false
+      //全局过滤器
+      Vue.filter('mySlice', function (value) {
+        return value.slice(0, 11)
+      })
+      new Vue({
+        el: '#root',
+        data: {
+          time: 1683621034195,
+        },
+        //局部过滤器
+        filters: {
+          timeFilter(value, str = 'YYYY年MM月DD日HH:mm:ss') {
+            return dayjs(value).format(str)
+          },
+        },
+      })
+    </script>
+  </body>
 </html>
